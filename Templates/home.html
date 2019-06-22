@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+  {% load staticfiles %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I &#128151 U 3000</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+        <link href="{% static 'css/home.css' %}" rel="stylesheet" type="text/css" />
+  
+<!--    python manage.py collectstatic-->
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">I &#128151 U 3000</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'signIn' %}">Sign In</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+  
+  <br>
+  <br>
+  
+  
+  <div class="row">
+      <div class="col-sm-4">
+        {% for category in category %}                           
+          {% if category == 'syrup' %}
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT6BHgxPo-o1XuWB2dRQuYxieCQRTiDQwjm9DyBK9Hq6t5C7uw" style="display: block; margin: auto; width: 120px; height: 120px; margin-bottom: 50px; margin-top: 15px;    background-position: 50%;
+    border-radius: 50%;">
+        <hr>
+          {% endif %}
+          {% if category == 'tablet' %}
+            <img  style="display: block; margin: auto; width: 120px; height: 120px; margin-bottom: 50px; margin-top: 15px;     background-position: 50%;
+    border-radius: 50%;" src="data:image/png;base64,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">
+        <hr>
+          {% endif %}
+          {% if category == 'capsule' %}
+            <img src="https://www.logolynx.com/images/logolynx/97/9781fd9c436d7323a93c48f03f51d7af.png" style="display: block; margin: auto; width: 120px; height: 120px; margin-bottom: 50px; margin-top: 15px;    background-position: 50%;
+    border-radius: 50%;">
+        <hr>
+          {% endif %}
+          {% if category == 'others' %}
+            <img src="https://banner2.kisspng.com/20180217/xxw/kisspng-medicine-first-aid-kit-clip-art-vector-hand-painted-first-aid-kit-5a88f7b3200e45.9004630515189257471313.jpg" style="display: block; margin: auto; width: 120px; height: 120px; margin-bottom: 50px; margin-top: 15px; background-position: 50%; border-radius: 50%;">
+        <hr>
+          {% endif %}
+        {% endfor %}
+      </div>
+    <div class="col-sm-8">
+      {% for name, quantity, cost, category in wholePackage %}
+      <div style=" height: 120px; margin-bottom: 50px; margin-top: 15px;">
+         <P style="font-size: 30px; margin: 0; padding: 0;">{{name}} ({{category}})</P>
+        <P style="font-size: 20px; margin: 0; padding: 0;">{{quantity}} Available</P>
+        <p class="font-italic" style="margin: 0; padding: 0;">Delivered by Mr. Naeem for free....  FREEEEEE</p>
+        <p style="font-size: 30px; margin: 0; padding: 0; color: #ea2939";>&#x20B9;{{cost}}</p>
+        </div>
+      <hr>
+      {% endfor %}
+      
+    </div>
+  </div>
+  
+
+  
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
